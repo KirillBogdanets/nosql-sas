@@ -1,0 +1,37 @@
+{
+  "name": "nosql-sas-hw",
+  "version": "0.0.1",
+  "description": "",
+  "main": "chess-app.js",
+  "scripts": {
+    "start": "node chess-app.js",
+    "parse-db-data": "node src/utils/db-parser.js",
+    "pm2-cluster-start": "pm2 start es.config.js",
+    "pm2-cluster-stop": "pm2 stop es.config.js",
+    "pm2-cluster-delete": "pm2 delete es.config.js",
+    "pm2-all-clasters-delete": "pm2 delete all",
+    "benchmark-test-new": "autocannon -c 50 -H x-api-key=abc123 http://127.0.0.1:3000/api/base",
+    "benchmark-test-old": "autocannon -c 50 http://127.0.0.1:9966/api/base",
+    "lint-write": "npm run pretty && eslint ./ --fix",
+    "pretty": "prettier --write */**/*.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-write"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autocannon": "^7.8.0",
+    "chess.js": "^0.12.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1",
+    "pm2": "^5.2.0"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "prettier": "^2.6.2"
+  }
+}
